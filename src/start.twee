@@ -5,6 +5,91 @@
     "format-version": "2.35.0"
 }
 
+:: RightSideBarScript [script]
+/* greyelf @ https://twinery.org/forum/discussion/6492/sugarcube-2-7-2-creating-a-panel-similar-to-the-ui-bar */
+/* Create the Right UI Bar. */
+var $rightUiBar = $('<div id="right-ui-bar"></div>').insertAfter("#ui-bar");
+
+var rightTray = $rightUiBar.append('<div id="right-ui-bar-tray"><button id="right-ui-bar-toggle" tabindex="0" title="Toggle the Right UI bar" aria-label="Toggle the Right UI bar" type="button"></button></div>');
+
+var rightBody = $rightUiBar.append('<div id="right-ui-bar-body"></div>');
+
+/* Attach the toggle button click. */
+$rightUiBar.find('#right-ui-bar-toggle').ariaClick({label : "Toggle the Right UI bar"}, () => $rightUiBar.toggleClass('stowed'));
+
+/* Automatically show the contents of the StoryRightSidebar passage in the right-ui-bar-body element. */
+postrender["Display Right Sidebar Contents"] = function (content, taskName) {
+	setPageElement('right-ui-bar-body', 'StoryRightSidebar');
+};
+
+:: StoryRightSidebar
+<h3>Table of Contents</h3>\
+<div id="accordionGroup" class="Accordion">\
+    <h3>\
+      <button aria-expanded="true"
+              class="Accordion-trigger"
+              aria-controls="sect1"
+              id="accordion1id">\
+        <span class="Accordion-title">\
+          Section 1
+          <span class="Accordion-icon"></span>\
+        </span>\
+      </button>\
+    </h3>\
+    <div id="sect1"
+         role="region"
+         aria-labelledby="accordion1id"
+         class="Accordion-panel">\
+      <div>\
+        Link 1
+      </div>\
+    </div>\
+    <h3>\
+      <button aria-expanded="false"
+              class="Accordion-trigger"
+              aria-controls="sect2"
+              id="accordion2id">\
+        <span class="Accordion-title">\
+          Section 2
+          <span class="Accordion-icon"></span>\
+        </span>\
+      </button>\
+    </h3>\
+    <div id="sect2"
+         role="region"
+         aria-labelledby="accordion2id"
+         class="Accordion-panel"
+         hidden="">\
+      <div>\
+        Link 1
+      </div>\
+    </div>\
+    <h3>\
+      <button aria-expanded="false"
+              class="Accordion-trigger"
+              aria-controls="sect3"
+              id="accordion3id">\
+        <span class="Accordion-title">\
+          Section 3
+          <span class="Accordion-icon"></span>\
+        </span>\
+      </button>\
+    </h3>\
+    <div id="sect3"
+         role="region"
+         aria-labelledby="accordion3id"
+         class="Accordion-panel"
+         hidden="">\
+      <div>\
+        Link 3
+      </div>\
+    </div>\
+  </div>
+
+<script>
+    jQuery().accordion();
+</script>
+
 :: StoryInit
 
 :: StoryTitle
