@@ -1,0 +1,16 @@
+:: StoryData
+{
+    "ifid": "FA0FBE2C-6538-4376-8A14-4AD9B4B4BFEB",
+    "format": "SugarCube",
+    "format-version": "2.35.0"
+}
+
+:: StoryInit
+
+:: StoryTitle
+Git Guide
+
+:: Start
+Start
+
+[[Next | Intro]]
